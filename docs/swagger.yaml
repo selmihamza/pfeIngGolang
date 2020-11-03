@@ -1,0 +1,793 @@
+basePath: /
+definitions:
+  Models.Addresse:
+    properties:
+      addressComplement:
+        type: string
+      addressDescription:
+        type: string
+      addressLat:
+        type: number
+      addressLong:
+        type: number
+      addressZipCode:
+        type: string
+      alias:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  Models.BackEndUser:
+    properties:
+      createdAt:
+        type: string
+      driver:
+        $ref: '#/definitions/Models.Driver'
+        type: object
+      driverID:
+        type: integer
+      email:
+        type: string
+      encryptedPassword:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: integer
+      lastName:
+        type: string
+      phoneNumber:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  Models.Driver:
+    properties:
+      active:
+        type: boolean
+      addresse:
+        $ref: '#/definitions/Models.Addresse'
+        type: object
+      addresseID:
+        type: integer
+      createdAt:
+        type: string
+      driverCompanies:
+        $ref: '#/definitions/Models.DriverCompanie'
+        type: object
+      driverCompanyID:
+        type: integer
+      driverLicense:
+        type: string
+      driverStatus:
+        type: integer
+      driverType:
+        type: integer
+      id:
+        type: integer
+      signUpStep:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  Models.DriverCar:
+    properties:
+      carMarque:
+        type: string
+      carModel:
+        type: string
+      carStatus:
+        type: integer
+      carType:
+        type: integer
+      color:
+        type: string
+      createdAt:
+        type: string
+      deleted:
+        type: boolean
+      driverCompanyID:
+        type: integer
+      driverID:
+        type: integer
+      id:
+        type: integer
+      isFr:
+        type: boolean
+      matricule:
+        type: string
+      refusalReason:
+        type: string
+      updatedAt:
+        type: string
+      validated:
+        type: integer
+      vehicleTypeID:
+        type: integer
+      year:
+        type: integer
+    type: object
+  Models.DriverCompanie:
+    properties:
+      companyDre:
+        type: string
+      companyName:
+        type: string
+      companySiren:
+        type: string
+      companyTva:
+        type: string
+      createdAt:
+        type: string
+      files:
+        items:
+          $ref: '#/definitions/Models.FileCompanie'
+        type: array
+      id:
+        type: integer
+      updatedAt:
+        type: string
+      vatPercentage:
+        type: number
+    type: object
+  Models.FileCompanie:
+    properties:
+      createdAt:
+        description: AdministrativeFileType AdministrativeFileType `gorm:"foreignkey:FileType;association_foreignkey:ID"`
+        type: string
+      driverCompanyID:
+        type: integer
+      fileType:
+        type: integer
+      id:
+        type: integer
+      ref:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  Models.Request:
+    properties:
+      activeForDispatch:
+        type: boolean
+      addressDropOff:
+        type: string
+      addressDropOffComplement:
+        type: string
+      addressDropOffLat:
+        type: number
+      addressDropOffLong:
+        type: number
+      addressDropOffPostalCode:
+        type: string
+      addressPickUp:
+        type: string
+      addressPickUpComplement:
+        type: string
+      addressPickUpLat:
+        type: number
+      addressPickUpLong:
+        type: number
+      addressPickUpPostalCode:
+        type: string
+      agendaEventID:
+        type: integer
+      channelID:
+        type: integer
+      closed:
+        type: boolean
+      comment:
+        type: string
+      commercialFees:
+        type: integer
+      companyID:
+        type: integer
+      companyPreferencesID:
+        type: integer
+      costCenter:
+        type: string
+      createdAt:
+        type: string
+      customerID:
+        type: integer
+      deliveryRecipientID:
+        description: CompanyReferences
+        type: integer
+      deliverySenderID:
+        type: integer
+      directRequest:
+        type: boolean
+      discountCodeDiscount:
+        type: integer
+      discountCodeID:
+        type: integer
+      dispatchDate:
+        type: string
+      driverCarID:
+        type: integer
+      driverDiscountCodeDiscount:
+        type: integer
+      driverID:
+        type: integer
+      driverPaymentID:
+        type: integer
+      driverPrice:
+        type: integer
+      driverZoneID:
+        description: PriceComponents          JSONB
+        type: integer
+      dropOffTimeWindowID:
+        type: integer
+      estimateDistanceM:
+        type: integer
+      estimateDropOffDate:
+        type: string
+      estimatePickUpDate:
+        type: string
+      fireTime:
+        type: string
+      flightID:
+        type: integer
+      flightNumber:
+        type: string
+      id:
+        type: integer
+      initialVehicleTypeID:
+        type: integer
+      invoiceID:
+        type: integer
+      maximumDetour:
+        type: integer
+      onlyDriverPriceCents:
+        type: integer
+      optionIDs:
+        items:
+          type: integer
+        type: array
+      optionsPrice:
+        type: integer
+      outsourcedDestinationRequestID:
+        type: integer
+      outsourcedOriginRequestID:
+        type: integer
+      partnerID:
+        type: string
+      passengerID:
+        type: integer
+      payinID:
+        type: integer
+      paymentType:
+        type: string
+      pickUpTimeWindowID:
+        type: integer
+      previousRequestID:
+        type: integer
+      priceChanged:
+        type: boolean
+      priorityRequest:
+        type: boolean
+      recurrentRequestID:
+        type: integer
+      requestDiscountCode:
+        type: string
+      reservationCode:
+        type: string
+      rideDate:
+        type: string
+      rideDiscountPercentage:
+        type: number
+      rideDropOffDate:
+        type: string
+      ridePrice:
+        type: number
+      rideType:
+        type: integer
+      ruleValueTimeWindowID:
+        type: integer
+      saasCompanyID:
+        type: integer
+      saasOfficeID:
+        type: integer
+      sidekiqJid:
+        type: string
+      state:
+        type: string
+      theoreticalDuration:
+        type: integer
+      type:
+        type: string
+      updatedAt:
+        type: string
+      vehicleTypeID:
+        type: integer
+      zoneID:
+        type: integer
+    type: object
+  Models.SaasOffice:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      saasCompanyID:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  Models.VehicleCategorie:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      saasOfficeID:
+        type: integer
+      totalCapacity:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  Models.VehicleOption:
+    properties:
+      alwaysAvailable:
+        type: boolean
+      createdAt:
+        type: string
+      deleted:
+        type: boolean
+      driverOption:
+        type: boolean
+      id:
+        type: integer
+      isDfaultForVehicleOptionCategory:
+        type: boolean
+      name:
+        type: string
+      priceImpact:
+        type: integer
+      saasOfficeID:
+        type: integer
+      timeImpact:
+        type: integer
+      updatedAt:
+        type: string
+      vehicleOptionCategoryID:
+        type: integer
+    type: object
+  Models.VehicleType:
+    properties:
+      createdAt:
+        type: string
+      designation:
+        type: string
+      id:
+        type: integer
+      isAvailable:
+        type: boolean
+      kmPrice:
+        type: integer
+      logoVehicle:
+        type: string
+      maxPlace:
+        type: integer
+      minPrice:
+        type: integer
+      pickupPrice:
+        type: integer
+      saasCompanyID:
+        type: integer
+      saasOfficeID:
+        type: integer
+      typeCode:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  Models.Zone:
+    properties:
+      address:
+        type: string
+      createdAt:
+        type: string
+      deleted:
+        type: boolean
+      driverZone:
+        type: boolean
+      greenZone:
+        type: boolean
+      id:
+        type: integer
+      latMax:
+        type: number
+      latMin:
+        type: number
+      longMax:
+        type: number
+      longMin:
+        type: number
+      name:
+        type: string
+      saasCompanyID:
+        type: integer
+      saasOfficeID:
+        type: integer
+      serviceArea:
+        type: boolean
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  controllers.CompanyAndOffice:
+    properties:
+      saasCompanyID:
+        type: integer
+      saasOfficeID:
+        type: integer
+    type: object
+host: api-company.herokuapp.com
+info:
+  contact:
+    email: hamza@craftfoundry.tech
+    name: Selmi hamza
+  description: This is a sample service for managing drivers space
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: DriversSpace API
+  version: "1.0"
+paths:
+  /{saas_company}/offices:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a list of offices  in database  by saas company name in
+        request parameter
+      parameters:
+      - description: 'enter saas_company:'
+        in: path
+        name: saas_company
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.SaasOffice'
+      summary: retrieve a list of offices by saas company name
+      tags:
+      - saas_companies saas_offices
+  /company:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a company by ID in database with the ID in request parameter
+      parameters:
+      - description: 'enter id:'
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.DriverCompanie'
+      summary: retrieve a company by ID
+      tags:
+      - driver_companies
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new company with the input payload
+      parameters:
+      - description: 'enter driver id (tester avec l''id : 17357 ) : '
+        in: query
+        name: DriverID
+        required: true
+        type: integer
+      - description: 'enter CompanyName:'
+        in: query
+        name: CompanyName
+        type: string
+      - description: 'enter CompanyDre:'
+        in: query
+        name: PcoNumber
+        type: string
+      - description: 'enter CompanyTva:'
+        in: query
+        name: VatNumber
+        type: string
+      - description: 'enter CompanySiren:'
+        in: query
+        name: Registration
+        type: string
+      - description: 'enter VatPercentage:'
+        in: query
+        name: VatRate
+        type: number
+      - description: 'enter rib file:'
+        in: formData
+        name: RIB
+        type: file
+      - description: 'enter insee file:'
+        in: formData
+        name: INSEE
+        type: file
+      - description: 'enter dre file:'
+        in: formData
+        name: DRE
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.DriverCompanie'
+      summary: Create a new company
+      tags:
+      - driver_companies
+    put:
+      consumes:
+      - multipart/form-data
+      description: update a company by id with the input payload
+      parameters:
+      - description: 'enter id:'
+        in: query
+        name: id
+        required: true
+        type: integer
+      - description: 'enter CompanyName:'
+        in: query
+        name: CompanyName
+        type: string
+      - description: 'enter CompanyDre:'
+        in: query
+        name: PcoNumber
+        type: string
+      - description: 'enter CompanyTva:'
+        in: query
+        name: VatNumber
+        type: string
+      - description: 'enter CompanySiren:'
+        in: query
+        name: Registration
+        type: string
+      - description: 'enter VatPercentage:'
+        in: query
+        name: VatRate
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.DriverCompanie'
+      summary: update a company
+      tags:
+      - driver_companies
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with the input payload
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.BackEndUser'
+      summary: Create a new user
+      tags:
+      - back_end_users
+  /request/{DriverID}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a request in database with the driver ID
+      parameters:
+      - description: 'enter driver id :11469:'
+        in: path
+        name: DriverID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Request'
+      summary: retrieve a request by driver ID
+      tags:
+      - request
+  /saascompanyAndoffice/{driver_id}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a saascompany and saasOffice by driverID in database with
+        the ID in request parameter
+      parameters:
+      - description: 'enter driver_id:'
+        in: path
+        name: driver_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.CompanyAndOffice'
+      summary: retrieve a saascompany and saasOffice by driverID
+      tags:
+      - saas_company_to_driver_relations saas_office_to_driver_relation
+  /vehicle:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new vehicle with the input payload
+      parameters:
+      - description: 'enter driver id (tester avec l''id : 11469 ) : '
+        in: query
+        name: DriverID
+        required: true
+        type: integer
+      - description: 'enter driver company id (tester avec l''id : 10725 ) : '
+        in: query
+        name: DriverCompanyID
+        required: true
+        type: integer
+      - description: 'enter saas office id (tester avec l''id : 1 ) : '
+        in: query
+        name: SaasOfficeID
+        required: true
+        type: integer
+      - description: 'enter Color:'
+        in: query
+        name: Color
+        type: string
+      - description: 'enter Matricule:'
+        in: query
+        name: Matricule
+        type: string
+      - description: 'enter Year:'
+        in: query
+        name: Year
+        type: string
+      - description: 'enter Model:'
+        in: query
+        name: Model
+        type: string
+      - description: 'enter Mark:'
+        in: query
+        name: Mark
+        type: string
+      - description: 'enter assur file:'
+        in: formData
+        name: ASSUR
+        type: file
+      - description: 'enter cgv file:'
+        in: formData
+        name: CGV
+        type: file
+      - description: 'enter atr file:'
+        in: formData
+        name: ATR
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.DriverCar'
+      summary: Create a new vehicle
+      tags:
+      - driver_cars
+  /vehicle_categories/{saas_officeID}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a Vehicule categories in database with the saas office
+        ID
+      parameters:
+      - description: 'enter saas_officeID:'
+        in: path
+        name: saas_officeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.VehicleCategorie'
+      summary: retrieve a Vehicule categories by saas office ID
+      tags:
+      - vehicle_categorie
+  /vehicle_options/{saas_officeID}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a Vehicule options in database with the office ID
+      parameters:
+      - description: 'enter saas_officeID:'
+        in: path
+        name: saas_officeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.VehicleOption'
+      summary: retrieve a Vehicule options by saas office ID
+      tags:
+      - vehicle_options
+  /vehicle_types/{saas_officeID}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a Vehicule types in database with the saas office ID
+      parameters:
+      - description: 'enter saas_officeID:'
+        in: path
+        name: saas_officeID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.VehicleType'
+      summary: retrieve a Vehicule types by saas office ID
+      tags:
+      - vehicle_types
+  /vehicle_zones/{saas_officeID}:
+    get:
+      consumes:
+      - application/json
+      description: retrieve a list of zones  in database by saas office id in request
+        parameter
+      parameters:
+      - description: 'enter saas_office ID:'
+        in: path
+        name: saas_officeID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.Zone'
+      summary: retrieve a list of zones by saas office id
+      tags:
+      - zones
+swagger: "2.0"
